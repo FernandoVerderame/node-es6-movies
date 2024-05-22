@@ -109,3 +109,23 @@ console.log(`La media dei voti dei film di genere Sci-Fi è ${averageSciFiVotes}
 // Media voti film Crime
 const averageCrimeVotes = getAverageVotes(newMovies, 'Crime');
 console.log(`La media dei voti dei film di genere Crime è ${averageCrimeVotes}.`);
+
+// Funzione che restituisce la lista di tutti i generi dei film
+const getGenreList = (list) => {
+
+    // Creo un array per i generi
+    const genres = [];
+
+    // Ciclo sulla lista dei film ed inserisco soltanto quelli che non sono ancora presenti
+    list.forEach(l => {
+        if (!genres.includes(l.genre)) {
+            genres.push(l.genre);
+        }
+    })
+
+    return genres;
+}
+
+// Lista di generi
+const genresList = getGenreList(newMovies);
+console.log(genresList);
