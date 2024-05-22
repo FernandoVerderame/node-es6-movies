@@ -50,6 +50,12 @@ const movies = [
 
 // ! Nuova classe Movie
 class Movie {
+    #title;
+    #year;
+    #genre;
+    #rating;
+    #type;
+
     constructor(title, year, genre, rating, type) {
         this.title = title;
         this.year = year;
@@ -60,7 +66,57 @@ class Movie {
 
     // Info film
     toString() {
-        return `${this.title} è un film di genere ${this.genre}. E' stato rilasciato nel ${this.year} ed ha un voto di ${this.rating}.`
+        return `${this.#title} è un film di genere ${this.#genre}. E' stato rilasciato nel ${this.#year} ed ha un voto di ${this.#rating}.`
+    }
+
+    // Getter title
+    get title() {
+        return this.#title;
+    }
+
+    // Setter title
+    set title(title) {
+        this.#title = title;
+    }
+
+    // Getter year
+    get year() {
+        return this.#year;
+    }
+
+    // Setter year
+    set year(year) {
+        this.#year = year;
+    }
+
+    // Getter genre
+    get genre() {
+        return this.#genre;
+    }
+
+    // Setter genre
+    set genre(genre) {
+        this.#genre = genre;
+    }
+
+    // Getter rating
+    get rating() {
+        return this.#rating;
+    }
+
+    // Setter rating
+    set rating(rating) {
+        this.#rating = rating;
+    }
+
+    // Getter type
+    get type() {
+        return this.#type;
+    }
+
+    // Setter type
+    set type(type) {
+        this.#type = type;
     }
 }
 
@@ -142,7 +198,7 @@ const getFilteredMoviesByGenre = (list, genre) => {
     // Filtro i film per genere specifico
     return list
         .filter(l => l.genre.toLowerCase() === genre.toLowerCase())
-        .map(item => item.toString());
+        .map(l => l.toString());
 }
 
 // Lista film per genere
