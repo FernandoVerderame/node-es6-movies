@@ -123,6 +123,8 @@ class Movie {
 
 // ! Nuova classe TvSerie
 class TvSerie extends Movie {
+    #seasons;
+
     constructor(title, year, genre, rating, seasons) {
         super(title, year, genre, rating, 'tv');
         this.seasons = seasons;
@@ -130,7 +132,17 @@ class TvSerie extends Movie {
 
     // Info TvSerie
     toString() {
-        return `${this.title} è una serie tv di genere ${this.genre}. La prima stagione è stata rilasciato nel ${this.year} ed in totale sono state prodotte ${this.seasons} stagioni. Ha un voto di ${this.rating}.`
+        return `${this.title} è una serie tv di genere ${this.genre}. La prima stagione è stata rilasciato nel ${this.year} ed in totale sono state prodotte ${this.#seasons} stagioni. Ha un voto di ${this.rating}.`
+    }
+
+    // Getter seasons
+    get seasons() {
+        return this.#seasons;
+    }
+
+    // Setter seasons
+    set seasons(seasons) {
+        this.#seasons = seasons;
     }
 }
 
