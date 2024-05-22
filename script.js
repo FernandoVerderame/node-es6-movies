@@ -103,10 +103,9 @@ const getAverageVotes = (list, genre) => {
 }
 
 // Media voti film Sci-Fi
-const averageSciFiVotes = getAverageVotes(movies, 'Sci-Fi');
+const averageSciFiVotes = getAverageVotes(newMovies, 'Sci-Fi');
 console.log(`La media dei voti dei film di genere Sci-Fi è ${averageSciFiVotes}.`);
 
 // Media voti film Crime
-const averageCrimeVotes = getAverageVotes(movies, 'Crime');
+const averageCrimeVotes = getAverageVotes(newMovies, 'Crime');
 console.log(`La media dei voti dei film di genere Crime è ${averageCrimeVotes}.`);
-
