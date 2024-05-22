@@ -85,4 +85,27 @@ const newMovies = movies.map(m => {
     }
 })
 
-console.log(newMovies);
+// console.log(newMovies);
+
+// Funzione per la media dei voti di tutti i film per un determinato genere
+const getAverageVotes = (list, genre) => {
+
+    // Filtro i film per genere specifico
+    const filteredMovies = list.filter(l => l.genre === genre);
+
+    // Calcolo la somma dei voti dei film filtrati 
+    const totalVotes = filteredMovies.reduce((sum, movie) => sum + movie.rating, 0);
+
+    // Calcolo la media dei voti 
+    const averageVotes = filteredMovies.length > 0 ? totalVotes / filteredMovies.length : 0;
+
+    return averageVotes;
+}
+
+// Media voti film Sci-Fi
+const averageSciFiVotes = getAverageVotes(movies, 'Sci-Fi');
+console.log(`La media dei voti dei film di genere Sci-Fi è ${averageSciFiVotes}.`);
+
+// Media voti film Crime
+const averageCrimeVotes = getAverageVotes(movies, 'Crime');
+console.log(`La media dei voti dei film di genere Crime è ${averageCrimeVotes}.`);
