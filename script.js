@@ -134,3 +134,17 @@ const getGenreList = (list) => {
 // Lista di generi
 const genresList = getGenreList(newMovies);
 console.log(genresList);
+
+
+// ! Funzione che filtra i film in base ad un genere passato come argomento
+const getFilteredMoviesByGenre = (list, genre) => {
+
+    // Filtro i film per genere specifico
+    const filteredMovies = list.filter(l => l.genre.toLowerCase() === genre.toLowerCase());
+
+    return filteredMovies;
+}
+
+// Lista film per genere
+const listByGenre = getFilteredMoviesByGenre(newMovies, 'Crime');
+console.log(listByGenre);
