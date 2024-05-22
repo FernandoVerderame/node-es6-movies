@@ -60,7 +60,7 @@ class Movie {
 
     // Info film
     toString() {
-        return `${this.title} è un film di genere ${this.genre}. E' stato rilasciato nel ${this.year} ed ha un voto di ${rating}.`
+        return `${this.title} è un film di genere ${this.genre}. E' stato rilasciato nel ${this.year} ed ha un voto di ${this.rating}.`
     }
 }
 
@@ -140,9 +140,9 @@ console.log(genresList);
 const getFilteredMoviesByGenre = (list, genre) => {
 
     // Filtro i film per genere specifico
-    const filteredMovies = list.filter(l => l.genre.toLowerCase() === genre.toLowerCase());
-
-    return filteredMovies;
+    return list
+        .filter(l => l.genre.toLowerCase() === genre.toLowerCase())
+        .map(item => item.toString());
 }
 
 // Lista film per genere
