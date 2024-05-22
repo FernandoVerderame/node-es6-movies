@@ -1,3 +1,4 @@
+// Array di oggetti Movies
 const movies = [
     {
         title: 'Inception',
@@ -45,3 +46,14 @@ const movies = [
         seasons: 8
     }
 ]
+
+// Nuova classe Movie
+class Movie {
+    constructor(title, year, genre, rating, type) {
+        this.title = title;
+        this.year = year;
+        this.genre = genre;
+        this.rating = rating;
+        this.type = type;
+    }
+}
