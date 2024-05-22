@@ -91,7 +91,7 @@ const newMovies = movies.map(m => {
 const getAverageVotes = (list, genre) => {
 
     // Filtro i film per genere specifico
-    const filteredMovies = list.filter(l => l.genre === genre);
+    const filteredMovies = list.filter(l => l.genre.toLowerCase() === genre.toLowerCase());
 
     // Calcolo la somma dei voti dei film filtrati 
     const totalVotes = filteredMovies.reduce((sum, movie) => sum + movie.rating, 0);
@@ -109,3 +109,4 @@ console.log(`La media dei voti dei film di genere Sci-Fi è ${averageSciFiVotes}
 // Media voti film Crime
 const averageCrimeVotes = getAverageVotes(movies, 'Crime');
 console.log(`La media dei voti dei film di genere Crime è ${averageCrimeVotes}.`);
+
