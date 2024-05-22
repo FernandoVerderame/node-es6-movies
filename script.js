@@ -57,3 +57,10 @@ class Movie {
         this.type = type;
     }
 }
+
+class TvSerie extends Movie {
+    constructor(title, year, genre, rating, seasons) {
+        super(title, year, genre, rating, 'tv');
+        this.seasons = seasons;
+    }
+}
