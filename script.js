@@ -1,4 +1,4 @@
-// Array di oggetti Movies
+// ! Array di oggetti Movies
 const movies = [
     {
         title: 'Inception',
@@ -47,7 +47,8 @@ const movies = [
     }
 ]
 
-// Nuova classe Movie
+
+// ! Nuova classe Movie
 class Movie {
     constructor(title, year, genre, rating, type) {
         this.title = title;
@@ -63,7 +64,8 @@ class Movie {
     }
 }
 
-// Nuova classe TvSerie
+
+// ! Nuova classe TvSerie
 class TvSerie extends Movie {
     constructor(title, year, genre, rating, seasons) {
         super(title, year, genre, rating, 'tv');
@@ -76,7 +78,8 @@ class TvSerie extends Movie {
     }
 }
 
-// Nuovo array con instanze Movie o TvSerie
+
+// ! Nuovo array con instanze Movie o TvSerie
 const newMovies = movies.map(m => {
     if (m.type === 'movie') {
         return new Movie(m.title, m.year, m.genre, m.rating, m.type);
@@ -87,7 +90,8 @@ const newMovies = movies.map(m => {
 
 // console.log(newMovies);
 
-// Funzione per la media dei voti di tutti i film per un determinato genere
+
+// ! Funzione per la media dei voti di tutti i film per un determinato genere
 const getAverageVotes = (list, genre) => {
 
     // Filtro i film per genere specifico
@@ -110,7 +114,8 @@ console.log(`La media dei voti dei film di genere Sci-Fi è ${averageSciFiVotes}
 const averageCrimeVotes = getAverageVotes(newMovies, 'Crime');
 console.log(`La media dei voti dei film di genere Crime è ${averageCrimeVotes}.`);
 
-// Funzione che restituisce la lista di tutti i generi dei film
+
+// ! Funzione che restituisce la lista di tutti i generi dei film
 const getGenreList = (list) => {
 
     // Creo un array per i generi
