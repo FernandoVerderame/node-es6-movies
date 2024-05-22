@@ -75,3 +75,14 @@ class TvSerie extends Movie {
         return `${this.title} è una serie tv di genere ${this.genre}. La prima stagione è stata rilasciato nel ${this.year} ed in totale sono state prodotte ${this.seasons} stagioni. Ha un voto di ${this.rating}.`
     }
 }
+
+// Nuovo array con instanze Movie o TvSerie
+const newMovies = movies.map(m => {
+    if (m.type === 'movie') {
+        return new Movie(m.title, m.year, m.genre, m.rating, m.type);
+    } else if (m.type === 'tv') {
+        return new TvSerie(m.title, m.year, m.genre, m.rating, m.seasons);
+    }
+})
+
+console.log(newMovies);
