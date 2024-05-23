@@ -203,3 +203,45 @@ const getFilteredMoviesByGenre = (movies, genre) => {
 // Lista film per genere
 const listByGenre = getFilteredMoviesByGenre(newMovies, 'Crime');
 console.log(listByGenre);
+
+class Cart {
+    #price = 3.99;
+    #movies = [];
+
+    get movies() {
+        return this.#movies;
+    }
+
+    // Aggiungi un film al carrello
+    addMovie(movie) {
+        // Filtro per titolo
+        if (this.#movies.find(m => m.title.toLowerCase() === movie.title.toLowerCase())) {
+            return;
+        }
+        this.#movies.push(movie);
+    }
+
+    // Rimuovi un film dal carrello
+    removeMovie(movie) {
+        this.#movies = this.#movies.filter(m => m.title.toLowerCase() !== movie.tile.toLowerCase());
+    }
+
+    // Calcola il costo totale dei film nel carrello
+    getTotalCost() {
+        return this.#price * this.#movies.length;;
+    }
+
+    // Stampa il contenuto del carrello
+    printCart() {
+        console.log('Carrello:');
+        this.#movies.forEach(m => console.log(m.toString()));
+        console.log(`Costo totale: €${this.getTotalCost().toFixed(2)}`);
+    }
+}
+
+const cart = new Cart();
+cart.addMovie(new Movie('Inception', 2010, 'Sci-Fi', 8.8));
+cart.addMovie(new Movie('The Matrix', 1999, 'Sci-Fi', 8.7));
+cart.addMovie(new Movie('The Godfather', 1972, 'Crime', 9.2));
+
+cart.printCart();
