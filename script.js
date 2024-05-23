@@ -54,19 +54,17 @@ class Movie {
     #year;
     #genre;
     #rating;
-    #type;
 
-    constructor(title, year, genre, rating, type) {
-        this.title = title;
-        this.year = year;
-        this.genre = genre;
-        this.rating = rating;
-        this.type = type;
+    constructor(title, year, genre, rating) {
+        this.#title = title;
+        this.#year = year;
+        this.#genre = genre;
+        this.#rating = rating;
     }
 
     // Info film
     toString() {
-        return `${this.#title} è un film di genere ${this.#genre}. E' stato rilasciato nel ${this.#year} ed ha un voto di ${this.#rating}.`
+        return `${this.title} è un film di genere ${this.genre}. E' stato rilasciato nel ${this.year} ed ha un voto di ${this.rating}.`
     }
 
     // Getter title
@@ -108,16 +106,6 @@ class Movie {
     set rating(rating) {
         this.#rating = rating;
     }
-
-    // Getter type
-    get type() {
-        return this.#type;
-    }
-
-    // Setter type
-    set type(type) {
-        this.#type = type;
-    }
 }
 
 
@@ -126,7 +114,7 @@ class TvSerie extends Movie {
     #seasons;
 
     constructor(title, year, genre, rating, seasons) {
-        super(title, year, genre, rating, 'tv');
+        super(title, year, genre, rating);
         this.seasons = seasons;
     }
 
@@ -150,23 +138,22 @@ class TvSerie extends Movie {
 // ! Nuovo array con instanze Movie o TvSerie
 const newMovies = movies.map(m => {
     if (m.type === 'movie') {
-        return new Movie(m.title, m.year, m.genre, m.rating, m.type);
-    } else if (m.type === 'tv') {
+        return new Movie(m.title, m.year, m.genre, m.rating);
+    } else {
         return new TvSerie(m.title, m.year, m.genre, m.rating, m.seasons);
     }
 })
 
-// console.log(newMovies);
-
+newMovies.forEach(movie => console.log(movie.toString()));
 
 // ! Funzione per la media dei voti di tutti i film per un determinato genere
-const getAverageVotes = (list, genre) => {
+const getAverageVotes = (movies, genre) => {
 
     // Filtro i film per genere specifico
-    const filteredMovies = list.filter(l => l.genre.toLowerCase() === genre.toLowerCase());
+    const filteredMovies = movies.filter(m => m.genre.toLowerCase() === genre.toLowerCase());
 
     // Calcolo la somma dei voti dei film filtrati 
-    const totalVotes = filteredMovies.reduce((sum, movie) => sum + movie.rating, 0);
+    const totalVotes = filteredMovies.reduce((sum, m) => sum + m.rating, 0);
 
     // Calcolo la media dei voti 
     const averageVotes = filteredMovies.length > 0 ? totalVotes / filteredMovies.length : 0;
@@ -184,15 +171,15 @@ console.log(`La media dei voti dei film di genere Crime è ${averageCrimeVotes}.
 
 
 // ! Funzione che restituisce la lista di tutti i generi dei film
-const getGenreList = (list) => {
+const getGenreList = movies => {
 
     // Creo un array per i generi
     const genres = [];
 
     // Ciclo sulla lista dei film ed inserisco soltanto quelli che non sono ancora presenti
-    list.forEach(l => {
-        if (!genres.includes(l.genre)) {
-            genres.push(l.genre);
+    movies.forEach(m => {
+        if (!genres.includes(m.genre)) {
+            genres.push(m.genre);
         }
     })
 
@@ -205,12 +192,12 @@ console.log(genresList);
 
 
 // ! Funzione che filtra i film in base ad un genere passato come argomento
-const getFilteredMoviesByGenre = (list, genre) => {
+const getFilteredMoviesByGenre = (movies, genre) => {
 
     // Filtro i film per genere specifico
-    return list
-        .filter(l => l.genre.toLowerCase() === genre.toLowerCase())
-        .map(l => l.toString());
+    return movies
+        .filter(m => m.genre.toLowerCase() === genre.toLowerCase())
+        .map(m => m.toString());
 }
 
 // Lista film per genere
